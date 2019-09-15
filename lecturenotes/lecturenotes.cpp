@@ -8,7 +8,10 @@
 //#include <errno.h>
 #include <cpr/cpr.h>
 #include <regex>
-#include <iterator>
+//#include <iterator>
+#include "ProgressBar.hpp"
+#include <boost/filesystem.hpp>
+
 
 using namespace std;
 
@@ -39,7 +42,7 @@ string match(string str,regex reg){
 			current_match++;
 
 		}
-		cout << temp_iter->str(1)<< endl;
+		//cout << temp_iter->str(1)<< endl;
 		return temp_iter->str(1);
 	
 }
@@ -49,6 +52,8 @@ int dl_jpg(string url,string file_name) {
 	CURLcode result;
 	string full_path = "./images/" + file_name + ".jpg";
 	errno_t err;
+	
+	
 	if ((err = fopen_s(&fp, full_path.c_str(), "wb")) != 0)
 	{
 		cout <<"File was not opened"<< endl;
@@ -59,12 +64,12 @@ int dl_jpg(string url,string file_name) {
 	curl_easy_setopt(curl, CURLOPT_FAILONERROR, 1L);
 	
 	result = curl_easy_perform(curl);
-	cout << file_name << ' ';
-	if (result == CURLE_OK)
-	{
-		cout << "Downloaded" << endl;
-	}
-	else
+	//cout << file_name << ' ';
+	//if (result == CURLE_OK)
+	//{
+	//	cout << "Downloaded" << endl;
+	//}
+	if(result != CURLE_OK)
 	{
 		cout << "Failed Reason : " << curl_easy_strerror( result ) << endl ;
 	}
@@ -75,6 +80,17 @@ int dl_jpg(string url,string file_name) {
 
 int main(int argc,char **argv)
 {   
+	if (argc != 2)
+	{
+		cout << "usage: lecturenotes <url>";
+		return 0;
+	}
+
+	if (!boost::filesystem::is_directory("./images")) {
+		cout << "creating images subdirectory" << endl;
+		boost::filesystem::create_directory("./images");
+
+	}
 	//regex
 	regex reg_page_url(R"((/uploads/upload/note/\w+/\w+/[a-zA-Z0-9-]+\.(jpeg|jpg)))");
 	regex reg_total_pages(R"("numberOfPages":\s(\d+),)");
@@ -84,6 +100,8 @@ int main(int argc,char **argv)
 	page_url += "/1";
     auto r = cpr::Get(cpr::Url{page_url});
 	int total_pages = stoi(match(r.text, reg_total_pages));
+	cout << "Total pages: " << total_pages << endl;
+	ProgressBar progressBar(total_pages, 70);
 	
 	//main loop
 	for (int i = 1; i <= total_pages;i++) {
@@ -95,7 +113,11 @@ int main(int argc,char **argv)
 	    string temp_jpg_url = "https://lecturenotes.in"+match(temp_r.text, reg_page_url);
 		//downloading the jpg img
 		dl_jpg(temp_jpg_url, patch::to_string(i));
+		++progressBar;
+		cout << "Page: " << i << "  ";
+		progressBar.display();
 }
+	progressBar.done();
 
 	//dl_jpg("https://lecturenotes.in/uploads/upload/note/8d/8djmG7OoAg/22-5b1fbff199859ee950086584be28405c.jpeg", patch::to_string(22));
     //cout << "Hello World!\n";
