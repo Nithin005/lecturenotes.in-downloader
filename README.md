@@ -23,4 +23,5 @@ Example
 
 then press Enter.
 
+# Credits
 Thanks to prakhar1989(https://github.com/prakhar1989) for progress-cpp
