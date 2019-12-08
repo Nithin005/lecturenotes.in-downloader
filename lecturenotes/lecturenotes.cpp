@@ -86,7 +86,7 @@ int main(int argc,char **argv)
 		return 0;
 	}
 
-	if (boost::filesystem::is_directory("./images")) {
+	if (!boost::filesystem::is_directory("./images")) {
 		cout << "creating images subdirectory" << endl;
 		boost::filesystem::create_directory("./images");
 
