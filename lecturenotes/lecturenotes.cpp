@@ -86,13 +86,14 @@ int main(int argc,char **argv)
 		return 0;
 	}
 
-	if (!boost::filesystem::is_directory("./images")) {
+	if (boost::filesystem::is_directory("./images")) {
 		cout << "creating images subdirectory" << endl;
 		boost::filesystem::create_directory("./images");
 
 	}
 	//regex
-	regex reg_page_url(R"((/uploads/upload/note/\w+/\w+/[a-zA-Z0-9-]+\.(jpeg|jpg)))");
+	//regex reg_page_url(R"((/uploads/upload/note/\w+/\w+/[a-zA-Z0-9-]+\.(jpeg|jpg)))");
+	regex reg_page_url(R"((/uploads/upload(/\w+)+/[a-zA-Z0-9-]+\.(jpeg|jpg)))");
 	regex reg_total_pages(R"("numberOfPages":\s(\d+),)");
 	
 	//Getting total page no
