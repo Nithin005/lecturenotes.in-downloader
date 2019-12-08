@@ -16,7 +16,7 @@ the images are in ./images subdirectory . the images can be constructed into pdf
 
 **Step 3 :**
 
-Open command prompt in the folder you extracted the files, then type `lecturenotes` and paste the `url`
+>Open command prompt in the folder you extracted the files, then type `lecturenotes` and paste the `url`
 
 Example
 
