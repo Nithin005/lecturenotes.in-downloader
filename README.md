@@ -20,7 +20,9 @@ the images are in ./images subdirectory . the images can be constructed into pdf
 
 Example
 
->lecturenotes https://lecturenotes.in/notes/12168-programming-in-c
+```shell
+lecturenotes https://lecturenotes.in/notes/12168-programming-in-c
+```
 
 then press Enter.
 
