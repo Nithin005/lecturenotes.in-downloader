@@ -19,7 +19,7 @@ Open command prompt in the folder you placed your notes, then type `lecturenotes
 
 Example
 
-```bash
+```Powershell
 lecturenotes https://lecturenotes.in/notes/12168-programming-in-c
 ```
 
