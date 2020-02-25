@@ -19,7 +19,9 @@ Open command prompt in the folder you placed your notes, then type `lecturenotes
 
 Example
 
->lecturenotes https://lecturenotes.in/notes/12168-programming-in-c
+```bash
+lecturenotes https://lecturenotes.in/notes/12168-programming-in-c
+```
 
 then press Enter.
 
