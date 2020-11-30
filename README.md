@@ -1,4 +1,15 @@
+# This Tool NO LONGER WORKS. Check 
+
+### this [TamperMonkey Script](https://github.com/Nithin005/lecturenotes.in-dl.tampermonkey)(Works on Most Browsers) 
+
+### OR 
+
+### this [Firefox Extension](https://github.com/Nithin005/lecturenotes.in-chrome-extension)
+
+
+
 # What's lecturenotes.in-downloader ?
+
 Simple CLI tool to download from lecturenotes.in
 
 # What it can do ?
@@ -7,7 +18,7 @@ the images are in ./images subdirectory . the images can be constructed into pdf
 
 # How to use ?
 **Step 1 :**
-> Download the .rar file from [Assets](https://github.com/Nithin005/lecturenotes.in-downloader/releases and extract the files in a seperate folder.
+> Download the .rar file from [Assets](https://github.com/Nithin005/lecturenotes.in-downloader/releases) and extract the files in a seperate folder.
 <!--- > Download the .exe file from [Assets](https://github.com/Nithin005/lecturenotes.in-downloader/releases "Download Executable") .Download all **.dll**  and **.exe** files and place the files in a seperate folder. --->
 
 **Step 2 :**
